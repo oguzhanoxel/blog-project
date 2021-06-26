@@ -10,12 +10,12 @@ from rest_framework.generics import (
 )
 
 
-class PostList(ListAPIView):
+class ListPost(ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
 
-class PostDetail(RetrieveAPIView):
+class RetrievePost(RetrieveAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
@@ -25,7 +25,7 @@ class CreatePost(CreateAPIView):
     serializer_class = PostSerializer
 
 
-class UpdatePost(RetrieveUpdateAPIView):
+class RetrieveUpdatePost(RetrieveUpdateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
