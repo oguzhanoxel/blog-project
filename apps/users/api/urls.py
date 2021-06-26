@@ -10,8 +10,8 @@ from .views import (
 
 urlpatterns = [
     path('', ListUser.as_view()),
-    path('<int:pk>', DetailUser.as_view()),
+    path('<int:id>', DetailUser.as_view()),
     path('create', CreateUser.as_view()),
-    path('<int:pk>/update', RetrieveUpdateUser.as_view()),
-    path('<int:pk>/delete', DeleteUser.as_view()),
+    path('<int:id>/update', RetrieveUpdateUser.as_view()),
+    path('<int:id>/delete', DeleteUser.as_view()),
 ]
