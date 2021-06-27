@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'apps.users',
     # third party apps
     'rest_framework',
+    'knox',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,12 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Django Rest Framework
+# https://www.django-rest-framework.org
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'knox.auth.TokenAuthentication',
+    ]
+}
