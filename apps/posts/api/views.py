@@ -1,3 +1,5 @@
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 
 from rest_framework.generics import (
     ListAPIView,
@@ -25,12 +27,21 @@ class ListPost(ListAPIView):
     queryset = Post.objects.all()
     permission_classes = [AllowAny]
     serializer_class = PostListSerializer
+    
+
+    @method_decorator(cache_page(60))
+    def dispatch(self, *args, **kwargs):
+        return super(ListPost, self).dispatch(*args, **kwargs)
 
 
 class RetrievePost(RetrieveAPIView):
     queryset = Post.objects.all()
     permission_classes = [IsAuthenticated]
     serializer_class = PostDetailSerializer
+
+    @method_decorator(cache_page(60))
+    def dispatch(self, *args, **kwargs):
+        return super(RetrievePost, self).dispatch(*args, **kwargs)
 
 
 class CreatePost(CreateAPIView):

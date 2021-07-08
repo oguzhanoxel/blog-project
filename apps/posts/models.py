@@ -17,6 +17,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ['-id']
 
 def pre_save_post_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
