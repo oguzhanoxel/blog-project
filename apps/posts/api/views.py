@@ -12,6 +12,7 @@ from rest_framework.permissions import (
     AllowAny,
     IsAuthenticated,
 )
+from rest_framework import filters
 
 from ..models import Post
 from .permissions import IsAuthorOrReadOnly
@@ -22,13 +23,17 @@ from .serializers import (
     )
 
 
-
 class ListPost(ListAPIView):
     queryset = Post.objects.all()
     permission_classes = [AllowAny]
     serializer_class = PostListSerializer
+    filter_backends = [
+        filters.SearchFilter,
+        filters.OrderingFilter,
+        ]
+    search_fields = ['title', 'content']
+    ordering_fields = ['created_at']
     
-
     @method_decorator(cache_page(60))
     def dispatch(self, *args, **kwargs):
         return super(ListPost, self).dispatch(*args, **kwargs)
