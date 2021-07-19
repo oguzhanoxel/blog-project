@@ -41,7 +41,7 @@ class ListPost(ListAPIView):
 
 class RetrievePost(RetrieveAPIView):
     queryset = Post.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     serializer_class = PostDetailSerializer
 
     @method_decorator(cache_page(60))
