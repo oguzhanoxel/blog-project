@@ -12,6 +12,7 @@ class ObtainTokenPairView(_TokenObtainPairView):
 
 
 class RegisterView(CreateAPIView):
+    authentication_classes = []
     queryset = User.objects.all()
     permission_classes = [AllowAny]
     serializer_class = RegisterSerializer

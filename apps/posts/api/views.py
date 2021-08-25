@@ -24,6 +24,7 @@ from .serializers import (
 
 
 class ListPost(ListAPIView):
+    authentication_classes = []
     queryset = Post.objects.all()
     permission_classes = [AllowAny]
     serializer_class = PostListSerializer
@@ -40,6 +41,7 @@ class ListPost(ListAPIView):
 
 
 class RetrievePost(RetrieveAPIView):
+    authentication_classes = []
     queryset = Post.objects.all()
     permission_classes = [AllowAny]
     serializer_class = PostDetailSerializer
